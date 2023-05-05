@@ -12,7 +12,7 @@ app.use(express.static(path.join(__dirname, './static')));
 const port = 3000;
 
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, './static/index.html'));
+  res.render('pages/index', { pageTitle: 'Welcome' });
 });
 
 app.get(`/speakers`, (req, res) => {
