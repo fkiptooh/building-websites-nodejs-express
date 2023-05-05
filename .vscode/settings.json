@@ -1,0 +1,9 @@
+{
+    "eslint.codeActionsOnSave.mode": "all",
+    "eslint.codeAction.showDocumentation": {
+        "enable": false
+    },
+    "eslint.codeActionsOnSave.rules": null,
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+}
