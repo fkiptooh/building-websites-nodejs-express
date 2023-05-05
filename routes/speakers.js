@@ -2,13 +2,15 @@ const express = require('express');
 
 const router = express.Router();
 
-module.exports = () => {
-  router.get('/', (req, res) => {
-    res.send('Speakers list');
+module.exports = (params) => {
+  const { speakersService } = params;
+  router.get('/', async (req, res) => {
+    const speakers = await speakersService.getList();
+    return res.json(speakers);
   });
-  // eslint-disable-next-line arrow-body-style
+
   router.get('/:shortname', (req, res) => {
-    return res.send(`Detail page of ${req.params.shortname}`);
+    res.send(`Detail page of ${req.params.shortname}`);
   });
   return router;
 };
