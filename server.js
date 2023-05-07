@@ -21,6 +21,9 @@ app.set('views', path.join(__dirname, './views'));
 app.locals.siteName = 'ROUX Meetups';
 
 app.use(express.static(path.join(__dirname, './static')));
+// app.get(`/throw`, (req, res, next) => {
+//   setTimeout(() => next(new Error('Something went wrong')), 500);
+// });
 
 app.use(async (req, res, next) => {
   try {
