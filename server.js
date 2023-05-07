@@ -3,6 +3,9 @@
 const express = require('express');
 const path = require('path');
 const cookieSession = require('cookie-session');
+const createError = require('http-errors');
+
+const port = 3000;
 // const { name } = require('ejs');
 
 const SpeakersService = require('./services/SpeakerService');
@@ -45,7 +48,15 @@ app.use(
 
 app.use('/', routes({ speakersService, feedbackService }));
 
-const port = 3000;
+app.use((req, res, next) => next(createError(404, 'Page not found')));
+
+app.use((err, req, res, next) => {
+  res.locals.message = err.message;
+  const status = err.status || 500;
+  res.locals.status = status;
+  res.status(status);
+  res.render('error');
+});
 
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);

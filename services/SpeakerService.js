@@ -23,7 +23,7 @@ class SpeakerService {
    */
   async getNames() {
     const data = await this.getData();
-    throw new Error(`something went wrong`);
+    // throw new Error(`something went wrong`);
 
     // We are using map() to transform the array we get into another one
     return data.map((speaker) => ({ name: speaker.name, shortname: speaker.shortname }));
