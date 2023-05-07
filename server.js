@@ -5,6 +5,8 @@ const path = require('path');
 const cookieSession = require('cookie-session');
 const createError = require('http-errors');
 
+const bodyParser = require('body-parser');
+
 const port = 3000;
 // const { name } = require('ejs');
 
@@ -45,6 +47,8 @@ app.use(
     keys: ['sgsfwt5652', 'hasgfws65265'],
   })
 );
+
+app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use('/', routes({ speakersService, feedbackService }));
 
